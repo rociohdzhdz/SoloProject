@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Search</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'stylestrsearch.css' %}">
+</head>
+<body>
+    <div id="head">
+            <a href="/storehome/{{request.session.usr_id}}">Back</a>
+            <a href="/logout">Logout</a></div>
+    <h3>{{ request.session.user_name }} Filtered Receipts</h3>
+  <div id="wrapper">
+    
+    <div id="tabl">
+    <table id="tabl2">
+        <tr>
+            <th>Category</th>
+            <th>Amount</th>
+            <th>Created By</th>
+            <th>Sent to User</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+        </tr>
+    {% for storereceipt in querysetstore %}
+                <tr>
+                    <td>{{ storereceipt.category }}</td>
+                    <td>{{ storereceipt.amount }}</td>
+                    <td>{{ storereceipt.creator.first_name }}</td>
+                    <td>{{ storereceipt.recfromuser }}</td>
+                    <td>{{ storereceipt.created_at }}</td>
+                    <td>Edit | Delete | Re-send</td>
+                </tr>
+    
+    {% endfor %}
+    </table>
+</div>
+</div>
+</body>
+</html>

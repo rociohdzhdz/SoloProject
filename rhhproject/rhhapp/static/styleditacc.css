@@ -1,0 +1,31 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(63, 61, 61);
+}
+#wrapper{
+    width: 900px;
+    height: auto;
+    background-color:whitesmoke;
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+#head{
+    text-align: right;
+}
+h3{
+    margin-left: 400px;
+}
+
+#formprofile{
+    width: 850px;
+    height: auto;
+    margin-top: 0px;
+    margin-left: 60px;
+    background-color:rgb(226, 228, 231);
+    border-style: dotted ;
+    display: inline-block;
+    text-align: center;
+}
+

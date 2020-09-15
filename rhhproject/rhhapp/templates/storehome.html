@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Home Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'stylestorehm.css' %}">
+</head>
+
+<body>
+    <div id="head">
+        <a href="/myaccount/{{request.session.usr_id}}">Edit My Account</a>
+            <a href="/logout">Logout</a></div>
+    <h2>Welcome {{ request.session.user_name }}</h2>
+    {% for message in messages %}
+    <p>{{ message }} </p>
+    {% endfor %}
+    <div id="wrapper">
+
+        <div class="formstor">
+    <h3>Send a Receipt</h3>
+    
+    <form action="/newreceiptstore" method="POST">
+        {% csrf_token %}
+        To User: <input type="text" name="useridstore" id=""><br><br>
+        Category: <input type="text" name="category" id=""><br><br>
+        Amount: <input type="text" name="amount" id=""><br><br>
+        Notes-Description: <br><textarea name="notedestore" id="" cols="20" rows="2"></textarea>
+        <input type="submit" value="Send Receipt" id="butt1">
+    </form>
+    
+    </div>
+    <div class="formstor">
+    <h3>Search a Receipt</h3>
+    <form action="/searchreceiptstore" method="">
+        {% csrf_token %}
+        User Id: <input type="text" name="useridsearch" id=""><br><br>
+        Date: <input type="date" name="datesearch" id=""><br><br>
+
+        <input type="submit" value="Search Receipt" id="butt2">
+    </form>
+    </div>
+</div>
+</body>
+
+</html>

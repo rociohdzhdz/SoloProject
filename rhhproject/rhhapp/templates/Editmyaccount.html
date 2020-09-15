@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit My Account</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styleditacc.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <div id="head">
+                <a href="/logout">Logout</a>
+            </div>
+            <h2>Edit {{editprofile.first_name}}{{editprofile.last_name}} Account Information</h2>
+        </div>
+        <div id="formprofile">
+        <form action="/myaccount/{{editprofile.id}}" method="post">
+            {% csrf_token %}
+            First Name: <input type="text" name="editfname" value="{{ editprofile.first_name}}" id=""><br><br>
+            Last Name: <input type="text" name="editlname" value="{{editprofile.last_name}}" id=""><br><br>
+            Email: <input type="text" name="editmail" value="{{editprofile.email}}" id="profemail"><br><br>
+            Country: <input type="text" name="editcountry" value="{{editprofile.country}}" id="profcountry"><br><br>
+            Tax ID: <input type="text" name="editaxid" value="{{editprofile.tpin}}" id="proftpid"><br><br>
+            <input type="submit" value="Update Profile">
+        </form>
+    </div>
+    </div>
+</body>
+</html>

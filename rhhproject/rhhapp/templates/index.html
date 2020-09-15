@@ -3,9 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RHH</title>
+    <title>Digital Receipts Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    
+    <div id="wrapper">
+        {% for message in messages %}
+        <p>{{ message }} </p>
+        {% endfor %}
+        <h1>Welcome to Digital Receipts Solutions</h1>
+        <div class="formulario">
+            <h2>If you don't have a user please register</h2>
+            <form action="/newuser" method="POST">
+                {% csrf_token %}
+                <p>First Name:<input type="text" name="fname" id="fname"></p>
+                <p>Last Name:<input type="text" name="lname" id="lname"></p>
+                <p>Email: <input type="text" name="mail" id="email"></p>
+                <p>User Id: <input type="text" name="userid" id="userid"></p>
+                <p>Country: <input type="text" name="country" id="country"></p>
+                <p>Tax ID: <input type="text" name="tpin" id="tpin"></p>
+                <label for="usrtype">User Type:</label>
+                <select id="usrt" name="usert">
+                    <option value="store">Store</option>
+                    <option value="user">User</option>
+                <br><br>
+                </select>
+                <p>Store Name: <input type="text" name="storen" id="storen"></p>
+                <p>Password:<input type="text" name="password" id="password"></p>
+                <p> Confirm Pws: <input type="text" name="confirmpass" id="confirmpass"></p>
+                <p><input type="submit" value="Register" id="BRegister"></p>
+            </form>
+        </div>
+        
+        <div class="formulario">
+            <h2>Already have a user?.. Login</h2>
+            <form action="/loginuser" method="POST">
+                {% csrf_token %}
+                <p>User Id: <input type="text" name="loguserid" id="loguserid"></p>
+                <p>Password: <input type="text" name="logpass" id="logpass"></p>
+                <p><input type="submit" value="Login" id="BLogin"></p>
+            </form>
+            <img src="{% static 'images/icon1.jpg' %}" width="100" height="100" id="icon1">
+            <img src="{% static 'images/icon2.jpg' %}" width="100" height="100" id="icon2">
+        </div>
+    </div>
 </body>
 </html>

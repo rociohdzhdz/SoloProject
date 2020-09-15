@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styleusrhome.css' %}">
+</head>
+
+<body>
+    <div id="head">
+        <a href="/myaccount/{{request.session.usr_id}}">Edit My Account</a>
+            <a href="/logout">Logout</a></div>
+    <h2>Welcome {{ request.session.usrname }}</h2>
+    {% for message in messages %}
+        <p>{{ message }} </p>
+        {% endfor %}
+    <div id="wrapper">
+        
+    <div id="addform">
+        <h3>Add a New Receipt. Select a Category</h3>
+        <form action="/newreceipt" method="POST">
+            {% csrf_token %}
+            <table id="categ">
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td><img src="{% static 'images/groceriesim.jpg'%}" width="120" height="120"></td>
+                    <td><img src="{% static 'images/mealsim.jpg'%}" width="150" height="120"></td>
+                    <td><img src="{% static 'images/entertim.jpg'%}" width="120" height="120"></td>
+                    <td><img src="{% static 'images/healthim.jpg'%}" width="120" height="120"></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" id="" name="category" value="Groceries">
+                        <label for="Groceries">Groceries</label></td>
+                    <td><input type="radio" id="" name="category" value="Meals">
+                        <label for="Meals">Meals</label></td>
+                    <td><input type="radio" id="" name="category" value="Entertainment">
+                        <label for="Entertainment">Entertainment</label></td>
+                    <td><input type="radio" id="" name="category" value="Health">
+                        <label for="Health">Health</label></td>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="{% static 'images/clothesim.jpg'%}" width="120" height="120"></td>
+                    <td><img src="{% static 'images/servicesim.jpg'%}" width="120" height="120"></td>
+                    <td><img src="{% static 'images/transportim.jpg'%}" width="120" height="120"></td>
+                    <td><img src="{% static 'images/othersim.jpg'%}" width="120" height="120"></td>
+                </tr>
+                <tr>
+                    <td><input type="radio" id="" name="category" value="Clothes">
+                        <label for="Clothes">Clothes</label></td>
+                    <td><input type="radio" id="" name="category" value="Services">
+                        <label for="Services">Services</label></td>
+                    <td><input type="radio" id="" name="category" value="Transportation">
+                        <label for="Transportation">Transportation</label></td>
+                    <td><input type="radio" id="" name="category" value="Others">
+                        <label for="Others">Others</label></td>
+                    </td>
+                </tr>
+            </table>
+            <br><br>
+            <div class="amnt">Amount ($): <input type="text" name="amount"></div><br><br>
+            <div class="amnt">Notes-Description: <br><textarea name="notedes" id="notes" cols="33" rows="2"></textarea>
+            <input type="submit" value="Add Receipt" id="buttadd"></div>
+        </form>
+
+    </div>
+    <div id="rechist">
+        <h3>Receipts History</h3>
+        <table id="table1" >
+            <tr>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Created By</th>
+                <th>Created Date</th>
+                <th>Actions</th>
+            </tr>
+            {% for onereceipt in queryset %}
+            <tr>
+                <td>{{ onereceipt.category }}</td>
+                <td>{{ onereceipt.amount }}</td>
+                <td>{{ onereceipt.creator.userid }}</td>
+                <td>{{ onereceipt.created_at }}</td>
+                <td>Details | {% if request.session.user_name == onereceipt.creator.userid %}
+                    <a href="/edit/{{onereceipt.id}}">Edit |{% endif %}  {% if request.session.user_name == onereceipt.creator.userid %}
+                    <a href="/delete/{{onereceipt.id}}">Delete</a></td>{% endif %}
+            </tr>
+
+            {% endfor %}
+    </div>
+</div>
+</body>
+
+</html>

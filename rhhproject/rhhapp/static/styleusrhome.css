@@ -1,0 +1,61 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(63, 61, 61);
+}
+#wrapper{
+    width: 1250px;
+    height: auto;
+    background-color:whitesmoke;
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+#head{
+    text-align: right;
+}
+h2{
+    margin-left: 500px;
+}
+h3{
+    text-align: center;
+}
+#addform{
+    width: 600px;
+    height: auto;
+    margin-top: 0px;
+    margin-left: 5px;
+    background-color:rgb(226, 228, 231);
+    border-style: dotted ;
+    display: inline-block;
+}
+.amnt{
+    margin-left: 40px;
+}
+#buttadd{
+    color:coral;
+}
+#categ{
+    margin-left: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    align-items: center;
+}
+#table1 td, th {
+    font-size: 14px;
+    text-align: center;
+}
+#table1{
+    margin-left: 10px;
+}
+#table1 td,th{ border-left:1px solid; border-right: 1px solid}
+#rechist{
+    width: 600px;
+    height: auto;
+    margin-top: 0px;
+    margin-left: 10px;
+    background-color:rgb(226, 228, 231);
+    border-style: dotted ;
+    display: inline-block;
+}
+
